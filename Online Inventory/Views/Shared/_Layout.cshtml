@@ -3,40 +3,155 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title | GiftsOnline</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
+
+
+    <!--cdn css & js-->
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/CustomcssBootstrap4.css" rel="stylesheet" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <!--Customized Sidebar-->
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <!--Javascript Css Slim-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <div class="wrapper">
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <center> <a href='@Url.Action("HomePage", "Home")'><img style="width:130px; align-content:center; height:100px; color:white;" src="~/Source/logoMain.png" /></a></center>
+                <h3>GiftsOnline IMS</h3>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <ul class="list-unstyled components" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; font-style:unset;">
+                <li>
+                    <a href='@Url.Action("HomePage", "Home")'>
+                        <img src="~/icons/shopping-cart.png" style="height:40px; width:45px; "> Home Page @*<i class="fas fa-home"></i>*@
+                    </a>
+                </li>
+                <li>
+                    <a href='@Url.Action("Categories", "Home")'>
+                        <img src="~/icons/price-tag.png" style="height:40px; width:45px; "> @*<i class="fas fa-briefcase"></i>*@ Categories
+                    </a>
+                </li>
+                <li>
+                    <a href='@Url.Action("Products", "Home")'>
+                        <img src="~/icons/home-blue.png" style="height:35px; width:40px; "> @*<i class="fas fa-copy"></i>*@ Products
+                    </a>
+                </li>
+                <li>
+                    <a href='@Url.Action("About", "Home")'>
+                        <img src="~/icons/textbook.png" style="height:40px; width:45px; "> @*<i class="fas fa-question"></i>*@ About
+                    </a>
+                </li>
+                <li>
+                    <a href='@Url.Action("Contact", "Home")'>
+                        <img src="~/icons/macbook.png" style="height:40px; width:45px; "> @*<i class="fas fa-paper-plane"></i>*@ Contact Developers
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!--Navigation Bar-->
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-light">
+
+                        @*<i class="fas fa-align-left"></i><span>Harman</span>*@
+
+                        <!--Write Something Here-->
+
+                        <img src="~/icons/cube.png" style="height:40px; width:40px; " />
+                    </button>
+                    <h4 style="font-stretch:wider; font-size:18px; font-family:cursive; color:lightgray;">&nbsp;&nbsp;&nbsp;&nbsp; Welcome to GiftsOnline Inventory Management System</h4>
+                    <button class="btn btn-light d-inline-block d-lg-none ml-auto" style="color:chartreuse;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        @*<i class="fas fa-align-justify"></i>*@
+                        <img src="~/icons/cube.png" style="height:40px; width:40px; " />
+
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                @if (Session["email"] != null)
+                                {
+                                    <a class="nav-link">@Session["email"]</a>
+                                }
+                            </li>
+                            <li></li>
+                            <li></li>
+
+                            <li class="nav-item">
+
+                                @if (Session["email"] == null)
+                                {
+                                    <a class="nav-link" href='@Url.Action("AdminLogin", "Login")'>Login</a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link" href='@Url.Action("AdminLogin", "Login")'>Logout</a>
+                                }
+
+
+
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container body-content">
+                @RenderBody()
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
     </div>
 
+
+    @Html.ValidationSummary(true)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+
+
+    <div class="card-footer">
+        <footer style="text-align:center;">
+            <p>&copy; @DateTime.Now.Year - GiftsOnline | Inventory Management System</p>
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 </body>
+
 </html>

@@ -1,17 +1,167 @@
-﻿@{
+﻿@model Online_Inventory.Models.Feedback
+@Html.ValidationSummary(true)
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+<style>
+
+    h4 {
+        font-family: Georgia;
+        font-size: 36px;
+        color: beige;
+    }
+
+    h5 {
+        color: blanchedalmond;
+        font-size: 25px;
+        padding-left: 250px;
+    }
+
+    h6 {
+        color: aliceblue;
+        padding-top: 10px;
+        font-size: 15px;
+        padding-left: 75px;
+    }
+
+    body {
+        background-size: 1400px 1500px;
+    }
+</style>
+
+<div class="card-header">
+    <h4>Contact Developers</h4>
+</div>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-xl-12">
+        @using (Html.BeginForm("Feed", "Home", FormMethod.Post))
+        {
+            <div class="header">
+                <h3 styl="color:aliceblue">
+                    Query Box
+                </h3>
+            </div>
+
+            <br />
+            <label class="field-validation-error" style="color:red; font-family:Arial, Helvetica, sans-serif; font-size:13px;">@Html.DisplayFor(x => x.ErrorMessage)</label>
+
+            <table style="background-color:transparent; color:white; margin-bottom:22px;">
+                <tbody style="margin-bottom:5px;">
+                    <tr>
+                        <th>Name/Email</th>
+                        <th> </th>
+                        <td> </td>
+                        <td> </td>
+                        <td>
+
+                            @if (Session["email"] != null)
+                            {
+                                @Html.TextBoxFor(x => x.email, new { @class = "form-control", @Value = @Session["email"], @rows = 4 })
+                            }
+
+                            else
+                            {
+                                @Html.TextBoxFor(x => x.email, new { @class = "form-control", @placeholder = "Enter Here", @rows = 4 })
+                            }
+
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr style="padding-top:25px;">
+                        <th>Subject</th>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.subject, new { @class = "form-control", @placeholder = "Enter Subject Here", @rows = 4 })
+                        </td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr style="padding-bottom:25px;"></tr>
+                    <tr>
+                        <th>Message</th>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            @Html.TextAreaFor(x => x.message, new { @class = "form-control", @placeholder = "Enter Query", @rows = 4 })
+                        </td>
+                        <td>
+                            @Html.ValidationMessageFor(model => model.message, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot style="padding-bottom:80px;">
+
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+
+                        <td style="padding-top:25px;">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </td>
+
+
+
+                        <td style="padding-top:25px; align-content:center">
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </td>
+
+                    </tr>
+
+                </tfoot>
+            </table>
+        }
+
+    </div>
+    <div class="col"></div>
+</div>
+
+
+
+<br />
+
+<br />
+
+<h5>Meet Our Developer Squad</h5>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col" id="dev-1">
+            <img src="~/Source/dev (1).jpeg" class="rounded-pill" alt="Harmanjit Singh" width="250" height="180">
+            <h6>Harmanjit Singh</h6>
+            <p style="font-family:Verdana; color:aliceblue; font-size:13px; padding-left:90px;">[C0715367]</p>
+        </div>
+        <div class="col" id="dev-2">
+            <img src="~/Source/dev (3).jpeg" class="rounded-pill" alt="Harmanjit Singh" width="250" height="180">
+            <h6>Mandeep Singh</h6>
+            <p style="font-family:Verdana; color:aliceblue; font-size:13px; padding-left:90px;">[C0713824]</p>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col" id="dev-3">
+            <img src="~/Source/dev (2).jpeg" class="rounded-pill" alt="Harmanjit Singh" width="250" height="180">
+            <h6>Deepak Arora</h6>
+            <p style="font-family:Verdana; color:aliceblue; font-size:13px; padding-left:90px;">[C0715367]</p>
+        </div>
+
+        <div class="col" id="dev-4">
+            <img src="~/Source/dev (4).jpeg" class="rounded-pill" alt="Harmanjit Singh" width="250" height="180">
+            <h6>Sagar Sharma</h6>
+            <p style="font-family:Verdana; color:aliceblue; font-size:13px; padding-left:90px;">[C0715367]</p>
+        </div>
+    </div>
+</div>

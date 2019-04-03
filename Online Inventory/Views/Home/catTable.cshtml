@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Online_Inventory.Models.CategoryTable>
+@Html.ValidationSummary(true)
+
+@{
+    Layout = null;
+}
+
+<table id="categoryMain" class="table table-responsive-sm table-hover table-borderless" style="width:90%; border-radius:20px; background-color:whitesmoke;">
+    <thead style="font-size:15px; color:#0094ff; height:20px; text-size-adjust:auto; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+        <tr>
+
+            <th> Category ID </th>
+            <th> Category Name </th>
+            <th> Update </th>
+        </tr>
+    </thead>
+    <tbody style="font-size:13px; text-align:center;  text-size-adjust:auto; ">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.categoryID)</td>
+                <td>@Html.DisplayFor(modelItem => item.categoryName)</td>
+
+                @if (Session["email"] != null)
+                {
+                    <td>
+                        <button class="btn btn-info btn-sm"><abbr title="Edit!">@Html.ActionLink("Edit", "EditCategory", new { id = item.categoryID })</abbr></button>
+                        <button class="btn btn-dark btn-sm"><abbr title="Delete">@Html.ActionLink("Delete", "DeleteCategory", new { id = item.categoryID })</abbr></button>
+                    </td>
+                }
+
+            </tr>
+        }
+    </tbody>
+    <tfoot style="font-size:15px; color:#0094ff; height:20px; text-size-adjust:auto; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Update</th>
+        </tr>
+    </tfoot>
+</table>

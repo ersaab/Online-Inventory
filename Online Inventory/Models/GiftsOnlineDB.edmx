@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GiftsOnlineDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="int" Nullable="false" />
+          <Property Name="categoryName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="subject" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="message" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginCred">
+          <Key>
+            <PropertyRef Name="emailadmin" />
+          </Key>
+          <Property Name="emailadmin" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="passtologin" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductTable">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="int" Nullable="false" />
+          <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="categoryName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="productSP" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="productQuantity" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="sp_addcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_addpro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="int" Mode="In" />
+          <Parameter Name="productName" Type="varchar" Mode="In" />
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+          <Parameter Name="productSP" Type="decimal" Mode="In" />
+          <Parameter Name="productQuantity" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_deletecat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_deletepro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_updatecat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_updatepro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="int" Mode="In" />
+          <Parameter Name="productName" Type="varchar" Mode="In" />
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+          <Parameter Name="productSP" Type="decimal" Mode="In" />
+          <Parameter Name="productQuantity" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_viewcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryID" Type="int" Mode="In" />
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_viewpro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="int" Mode="In" />
+          <Parameter Name="productName" Type="varchar" Mode="In" />
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+          <Parameter Name="productSP" Type="decimal" Mode="In" />
+          <Parameter Name="productQuantity" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="GiftsOnlineDBModelStoreContainer">
+          <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginCred" EntityType="Self.LoginCred" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTable" EntityType="Self.ProductTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GiftsOnlineDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="Int32" Nullable="false" />
+          <Property Name="categoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginCred">
+          <Key>
+            <PropertyRef Name="emailadmin" />
+          </Key>
+          <Property Name="emailadmin" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passtologin" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductTable">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="Int32" Nullable="false" />
+          <Property Name="productName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="categoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="productSP" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="productQuantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GiftsOnlineDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryTables" EntityType="Self.CategoryTable" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="LoginCreds" EntityType="Self.LoginCred" />
+          <EntitySet Name="ProductTables" EntityType="Self.ProductTable" />
+          <FunctionImport Name="sp_addcat">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_addpro">
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+            <Parameter Name="productSP" Mode="In" Type="Decimal" />
+            <Parameter Name="productQuantity" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_deletecat">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_deletepro">
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_updatecat">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_updatepro">
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+            <Parameter Name="productSP" Mode="In" Type="Decimal" />
+            <Parameter Name="productQuantity" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_viewcat" ReturnType="Collection(GiftsOnlineDBModel.sp_viewcat_Result)">
+            <Parameter Name="categoryID" Mode="In" Type="Int32" />
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_viewpro" ReturnType="Collection(GiftsOnlineDBModel.sp_viewpro_Result)">
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="categoryName" Mode="In" Type="String" />
+            <Parameter Name="productSP" Mode="In" Type="Decimal" />
+            <Parameter Name="productQuantity" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_viewcat_Result">
+          <Property Type="Int32" Name="categoryID" Nullable="false" />
+          <Property Type="String" Name="categoryName" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="sp_viewpro_Result">
+          <Property Type="Int32" Name="productId" Nullable="false" />
+          <Property Type="String" Name="productName" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="categoryName" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="productSP" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="productQuantity" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GiftsOnlineDBModelStoreContainer" CdmEntityContainer="GiftsOnlineDBEntities">
+          <EntitySetMapping Name="CategoryTables">
+            <EntityTypeMapping TypeName="GiftsOnlineDBModel.CategoryTable">
+              <MappingFragment StoreEntitySet="CategoryTable">
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="GiftsOnlineDBModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginCreds">
+            <EntityTypeMapping TypeName="GiftsOnlineDBModel.LoginCred">
+              <MappingFragment StoreEntitySet="LoginCred">
+                <ScalarProperty Name="emailadmin" ColumnName="emailadmin" />
+                <ScalarProperty Name="passtologin" ColumnName="passtologin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTables">
+            <EntityTypeMapping TypeName="GiftsOnlineDBModel.ProductTable">
+              <MappingFragment StoreEntitySet="ProductTable">
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="productSP" ColumnName="productSP" />
+                <ScalarProperty Name="productQuantity" ColumnName="productQuantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_addcat" FunctionName="GiftsOnlineDBModel.Store.sp_addcat" />
+          <FunctionImportMapping FunctionImportName="sp_addpro" FunctionName="GiftsOnlineDBModel.Store.sp_addpro" />
+          <FunctionImportMapping FunctionImportName="sp_deletecat" FunctionName="GiftsOnlineDBModel.Store.sp_deletecat" />
+          <FunctionImportMapping FunctionImportName="sp_deletepro" FunctionName="GiftsOnlineDBModel.Store.sp_deletepro" />
+          <FunctionImportMapping FunctionImportName="sp_updatecat" FunctionName="GiftsOnlineDBModel.Store.sp_updatecat" />
+          <FunctionImportMapping FunctionImportName="sp_updatepro" FunctionName="GiftsOnlineDBModel.Store.sp_updatepro" />
+          <FunctionImportMapping FunctionImportName="sp_viewcat" FunctionName="GiftsOnlineDBModel.Store.sp_viewcat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftsOnlineDBModel.sp_viewcat_Result">
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_viewpro" FunctionName="GiftsOnlineDBModel.Store.sp_viewpro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftsOnlineDBModel.sp_viewpro_Result">
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="productSP" ColumnName="productSP" />
+                <ScalarProperty Name="productQuantity" ColumnName="productQuantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

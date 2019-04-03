@@ -1,0 +1,86 @@
+﻿@model Online_Inventory.Models.CategoryTable
+@Html.ValidationSummary(true)
+@{
+    ViewBag.Title = "Categories";
+
+}
+
+
+<style>
+    h4 {
+        font-family: Georgia;
+        font-size: 36px;
+        color: beige;
+    }
+</style>
+
+
+<div class="card-header">
+    <h4>All Inventory Categories Here!</h4>
+</div>
+<br />
+
+<!--Table Content-->
+<div class="row">
+
+    <div class="col-7">
+
+
+
+    </div>
+    <div class="col-2" style="padding-right:40px; padding-bottom:20px;">
+
+        <!-- Modal Here -->
+        <button type="button" class="btn btn-primary btn-info btn-group-lg" data-toggle="modal" data-target="#AddCatModel">+ Add Category</button>
+
+        <div class="modal fade" id="AddCatModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="dialog">
+                <div class="modal-content">
+
+                    @using (Html.BeginForm("CategoriesPost", "Home", FormMethod.Post))
+                    {
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="LoginModel">Add Category</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group has-success has-feedback">
+                                <label for="addcid">Category ID</label>
+                                @Html.TextBoxFor(x => x.categoryID, new { @class = "form-control", @placeholder = "0000" })
+                                @Html.ValidationMessageFor(model => model.categoryID, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group has-success has-feedback">
+                                <label for="addcname">Category Name</label>
+                                @Html.TextBoxFor(x => x.categoryName, new { @class = "form-control", @placeholder = "Enter Here" })
+                                @Html.ValidationMessageFor(model => model.categoryName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="row2">
+    <div class="col-1"></div>
+    <div class="col-lg-11" style="overflow:auto; height:450px;">
+
+        @{
+            Html.RenderAction("catTable");
+        }
+
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Online_Inventory.Models.CategoryTable>
+@Html.ValidationSummary(true)
+<style>
+    h2 {
+        color: whitesmoke;
+        font-size: 26px;
+        font-family: 'Segoe UI';
+    }
+</style>
+
+<h2>Categories Table</h2>
+<div>
+    <table id="example" class="table table-responsive-lg table-hover table-borderless" style="width:80%; border-radius:20px; background-color:whitesmoke; text-decoration-color:black; height:auto;">
+
+        <thead style="font-size:13px; text-size-adjust:auto; color:#0094ff; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+            <tr>
+                <th>Category ID</th>
+                <th>Category Name</th>
+            </tr>
+        </thead>
+        <tbody style="font-size:13px; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.categoryID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.categoryName)</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot style="font-size:13px; color:#0094ff; text-size-adjust:auto; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+            <tr>
+                <th>Category ID</th>
+                <th>Category Name</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
