@@ -1,0 +1,73 @@
+﻿@Html.ValidationSummary(true)
+
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+<style>
+    h4 {
+        font-family: Georgia;
+        font-size: 36px;
+        color: beige;
+    }
+</style>
+
+<div class="card-header">
+    <h4>Hi, Admin!</h4>
+</div>
+
+<br />
+
+<marquee style="color:#4cff00; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:26px; font-stretch:expanded;">Have a Look at Your Inventory!</marquee>
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <button type="button" class="btn btn-primary" data-target="#ModelAddCategory" data-toggle="modal">+ Add Category</button>
+
+            <div class="modal fade" id="ModelAddCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="dialog">
+                    <div class="modal-content">
+                        @{
+                            Html.RenderAction("CatModelDataFetch");
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary" data-target="#ModelAddProduct" data-toggle="modal">+ Add Product</button>
+
+            <div class="modal fade" id="ModelAddProduct" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-content">
+                    <div class="modal-content">
+
+                        <!-- Modal body -->
+                        @{
+                            Html.RenderAction("ProModelDataFetch");
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4">
+                @{
+                    Html.RenderAction("CatResult");
+                }
+
+            </div>
+            <div class="col-xl-8">
+                @{
+                    Html.RenderAction("ProResult");
+                }
+            </div>
+        </div>
+    </div>
+</div>

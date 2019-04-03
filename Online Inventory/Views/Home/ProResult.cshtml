@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Online_Inventory.Models.ProductTable>
+@Html.ValidationSummary(true)
+<style>
+    h2 {
+        color: whitesmoke;
+        font-size: 26px;
+        font-family: 'Segoe UI';
+    }
+</style>
+
+<center><h2>Products Table</h2></center>
+
+<table id="example" class="table table-responsive-lg table-hover table-borderless" style="width:100%; border-radius:20px; background-color:whitesmoke; text-decoration-color:black">
+    <thead style="font-size:13px; text-size-adjust:auto; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center; color:#0094ff;">
+        <tr style="text-size-adjust:inherit">
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Product Quantity</th>
+            <th>Product Cost</th>
+        </tr>
+    </thead>
+    <tbody style="font-size:13px; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productQuantity)
+                </td>
+                <td>
+                    $
+                    @Html.DisplayFor(modelItem => item.productSP)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot style="font-size:13px; text-size-adjust:auto; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;  color:#0094ff;">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Product Quantity</th>
+            <th>Product Cost</th>
+        </tr>
+    </tfoot>
+</table>
+

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Online_Inventory.Models.ProductTable>
+@Html.ValidationSummary(true)
+@{
+    Layout = null;
+}
+
+<table id="example" class="table table-responsive-sm table-hover table-borderless" style="width:90%; border-radius:20px; background-color:whitesmoke;">
+    <thead style="font-size:15px; color:#0094ff; text-size-adjust:auto; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+        <tr>
+
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Product Cost</th>
+            <th>Product Quantity</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+
+    <tbody style="font-size:13px; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoryName)
+                </td>
+                <td>
+                    $
+                    @Html.DisplayFor(modelItem => item.productSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productQuantity)
+                </td>
+
+                @if (Session["email"] != null)
+                {
+                    <td>
+                        <button class="btn btn-info btn-sm"><abbr title="Edit!">@Html.ActionLink("Edit", "EditProduct", new { id = item.productId })</abbr></button>
+                        <button class="btn btn-dark btn-sm"><abbr title="Delete">@Html.ActionLink("Delete", "DeleteProduct", new { id = item.productId })</abbr></button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+    <tfoot style="font-size:15px; color:#0094ff; text-size-adjust:auto; font-family:Arial, Helvetica, sans-serif; font-display:auto; text-align:center;">
+        <tr>
+
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Product Cost</th>
+            <th>Product Quantity</th>
+            <th>Update</th>
+        </tr>
+    </tfoot>
+</table>
