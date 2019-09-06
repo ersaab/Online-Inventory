@@ -2,7 +2,9 @@
 
 Harmanjit Singh
 
-GiftsOnline is a Gifts Store which needs a managed Software in order to keep a track of Inventory
+GiftsOnline is a Gifts Store which is a managed Software in order to keep a track of Inventory
+
+CRUD Operations are performed in it.
 
 Includes:
 
